@@ -1,0 +1,8 @@
+dependencies {
+	compile 'org.springframework.boot:spring-boot-starter-thymeleaf'
+	compile 'org.springframework.boot:spring-boot-starter-web'
+    compile 'org.thymeleaf.extras:thymeleaf-extras-java8time:2.1.0.RELEASE'
+    compile 'org.webjars:bootstrap:4.0.0-alpha.2'
+
+	testCompile('org.springframework.boot:spring-boot-starter-test') 
+}

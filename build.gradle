@@ -1,0 +1,53 @@
+def javaVersion = '1.8'
+
+buildscript {
+    repositories {
+        mavenCentral()
+        maven { url 'http://repo.spring.io/plugins-release' }
+        maven { url 'http://repo.spring.io/plugins-snapshot' }
+    }
+    dependencies {
+        classpath 'io.spring.gradle:dependency-management-plugin:0.5.7.RELEASE'
+        classpath("org.springframework.boot:spring-boot-gradle-plugin:1.4.0.BUILD-SNAPSHOT")
+        classpath 'org.springframework.build.gradle:propdeps-plugin:0.0.7'
+    }
+}
+
+configure(allprojects){
+    apply plugin: 'idea'
+    apply plugin: 'propdeps'
+    apply plugin: 'propdeps-idea'
+    apply plugin: 'java'
+    apply plugin: 'groovy'
+    apply plugin: "io.spring.dependency-management"
+    apply plugin: 'spring-boot'
+
+    sourceCompatibility = javaVersion
+    targetCompatibility = javaVersion
+
+    repositories {
+        mavenCentral()
+        maven { url "https://repo.spring.io/snapshot" }
+        maven { url "https://repo.spring.io/milestone" }
+    }
+
+    dependencyManagement {
+        imports {
+            mavenBom 'io.spring.platform:platform-bom:2.0.5.RELEASE'
+        }
+    }
+
+    dependencies {
+
+        compile 'com.google.guava:guava'
+
+        optional "org.springframework.boot:spring-boot-devtools"
+
+        testCompile 'org.springframework.boot:spring-boot-starter-test'
+        testCompile 'org.spockframework:spock-core:1.0-groovy-2.4'
+        testCompile 'org.spockframework:spock-spring:1.0-groovy-2.4'
+        testCompile 'org.assertj:assertj-core:3.3.0'
+        testCompile 'org.springframework:spring-test'
+        testCompile 'org.jsoup:jsoup:1.8.3'
+    }
+}

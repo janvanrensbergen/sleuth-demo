@@ -1,0 +1,7 @@
+server:
+  port: 8282
+  context-path: /api
+spring:
+  activemq:
+    broker-url: tcp://localhost:61616
+    in-memory: false

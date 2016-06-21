@@ -1,0 +1,7 @@
+rootProject.name = 'sleuth-demo'
+
+include 'SLEUTH-client'
+include 'SLEUTH-rest'
+include 'SLEUTH-some-service'
+include 'SLEUTH-some-other-service'
+include 'SLEUTH-zipkin'
