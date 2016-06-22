@@ -2,3 +2,10 @@ spring:
   activemq:
     broker-url: tcp://localhost:61616
     in-memory: false
+  sleuth:
+      sampler:
+        percentage: 1
+  application:
+    name: some-other-service
+server:
+  port: 8383

@@ -1,2 +1,8 @@
 server:
   port: 8080
+spring:
+  sleuth:
+    sampler:
+      percentage: 1
+  application:
+    name: web-client
