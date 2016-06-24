@@ -1,3 +1,7 @@
+http://cloud.spring.io/spring-cloud-sleuth/
+https://github.com/spring-cloud/spring-cloud-sleuth
+
+
 # sleuth-client
 
 Simpel web app met form post: http://localhost:8484/
