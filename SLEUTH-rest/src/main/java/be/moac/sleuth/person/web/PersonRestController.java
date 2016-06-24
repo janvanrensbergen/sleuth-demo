@@ -23,13 +23,19 @@ public class PersonRestController {
     private static final Logger logger = LoggerFactory.getLogger(PersonRestController.class);
 
 
+    private final RestTemplate restTemplate;
+
+    @Autowired
+    public PersonRestController(RestTemplate restTemplate) {
+        this.restTemplate = restTemplate;
+    }
 
     @RequestMapping(method = RequestMethod.POST)
-    public String register(@RequestBody @Valid PersonForm person) {
+    public String register(@RequestBody @Valid PersonForm person)  {
 
         logger.info("Received some person  [{} {}] through rest. Sending to some service.", person.getFirstName(), person.getName());
 
-        final ResponseEntity<String> response = new RestTemplate()
+        final ResponseEntity<String> response = this.restTemplate
                 .postForEntity("http://localhost:8282/api/person", person, String.class);
 
         logger.info("Some service responded with code [{}] and body [{}]", response.getStatusCode(), response.getBody());

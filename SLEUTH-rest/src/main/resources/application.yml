@@ -3,6 +3,6 @@ server:
 spring:
   sleuth:
     sampler:
-      percentage: 1
+      percentage: 0.1
   application:
     name: rest-api

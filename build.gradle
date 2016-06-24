@@ -41,7 +41,11 @@ configure(allprojects){
     dependencies {
 
         compile 'com.google.guava:guava'
+
+//        compile "org.springframework.cloud:spring-cloud-sleuth"
         compile "org.springframework.cloud:spring-cloud-sleuth-zipkin"
+
+        compile "org.springframework:spring-aspects"
 
         optional "org.springframework.boot:spring-boot-devtools"
 

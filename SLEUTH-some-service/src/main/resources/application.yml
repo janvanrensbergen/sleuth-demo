@@ -9,4 +9,4 @@ spring:
     sampler:
       percentage: 1
   application:
-    name: some-service
+    name: backend

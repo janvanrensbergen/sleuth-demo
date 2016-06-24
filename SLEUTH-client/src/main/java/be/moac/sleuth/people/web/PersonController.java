@@ -3,6 +3,7 @@ package be.moac.sleuth.people.web;
 import be.moac.sleuth.people.PersonForm;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -21,6 +22,14 @@ public class PersonController {
 
     private static final Logger logger = LoggerFactory.getLogger(PersonController.class);
 
+
+    private final RestTemplate restTemplate;
+
+    @Autowired
+    public PersonController(RestTemplate restTemplate) {
+        this.restTemplate = restTemplate;
+    }
+
     @RequestMapping(method = RequestMethod.GET)
     public String person(Model model, PersonForm person){
         model.addAttribute("person", person);
@@ -34,7 +43,7 @@ public class PersonController {
 
         logger.info("Received some person  [{} {}] through form. Sending to some service.", person.getFirstName(), person.getName());
 
-        final ResponseEntity<String> response = new RestTemplate()
+        final ResponseEntity<String> response = this.restTemplate
                 .postForEntity("http://localhost:8282/api/person", person, String.class);
 
         logger.info("Some service responded with code [{}] and body [{}]", response.getStatusCode(), response.getBody());

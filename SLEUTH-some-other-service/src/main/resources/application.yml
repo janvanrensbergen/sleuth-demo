@@ -6,6 +6,6 @@ spring:
       sampler:
         percentage: 1
   application:
-    name: some-other-service
+    name: JMS-listener
 server:
   port: 8383

@@ -30,7 +30,7 @@ public class SomeOtherServiceApplication {
         SpringApplication.run(SomeOtherServiceApplication.class, args);
     }
 
-        @Bean(name = PollerMetadata.DEFAULT_POLLER)
+    @Bean(name = PollerMetadata.DEFAULT_POLLER)
     public PollerMetadata poller() {
         return Pollers.fixedDelay(1000).get();
     }
